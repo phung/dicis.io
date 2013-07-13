@@ -2,16 +2,17 @@
   .logo_event
     %h1 dicis.io
 
-  %h1 Listing options
-
+  %h2.option_title What is your option?
   %input#option{'type' => 'text'}
   %input#submit{'type' => 'submit', 'value' => 'add'}
+
 
   %script
     var updateUrl =
     = "'/#@eventId/update-options';"
     var addUrl =
     = "'/#@eventId/add-option';"
+  %ul#options
   :javascript
     $.ajax({
       url: updateUrl,
@@ -28,7 +29,7 @@
       $.ajax({
         url: addUrl,
         type: 'POST',
-        data: $('#option').val(),
+        data: JSON.stringify({ 'option': $('#option').val()}),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         async: true,
