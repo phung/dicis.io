@@ -13,7 +13,7 @@
     = "'/#@eventId/update-options';"
     var addUrl =
     = "'/#@eventId/add-option';"
-  %ul#options
+  %ul#options{:style => "min-height: 170px"}
   %div.submit-option
     %a{:href => "/#@eventId/vote"}
       %h2 Vote
@@ -45,11 +45,11 @@
       });
     };
     update();
-    $('#submit').on('click', function() {
+    $('#form').on('submit', function() {
       $.ajax({
         url: addUrl,
         type: 'POST',
-        data: JSON.stringify({ 'option': $('#option').val()}),
+        data: JSON.stringify({ 'option': $('#option_name').val()}),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         async: true,
