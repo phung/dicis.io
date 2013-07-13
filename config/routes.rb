@@ -10,6 +10,7 @@ DicisIo::Application.routes.draw do
     resources :options
   end
   
+  get '/:id/updated_results' => "events#updated_result"
   get '/:id/vote' => "votes#index"
   #post '/events/:id/getOptions' => "events#getOptions"
   post '/:id/update-options' => "events#update_2"
