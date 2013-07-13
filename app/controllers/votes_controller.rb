@@ -8,6 +8,14 @@ class VotesController < ApplicationController
     @options = Option.where(:eventId => @eventId);
     @votes = Vote.all
   end
+  
+  def submit
+    @votes = params[:votes]
+    
+    #puts response.body
+    #msg ={ :status => "ok", :message => "YAY", :html => "<p></p>"}
+    #format.json { render :json => msg}
+  end
 
   # GET /votes/1
   # GET /votes/1.json
