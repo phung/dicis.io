@@ -5,6 +5,7 @@ class OptionsController < ApplicationController
   # GET /options.json
   def index
     @options = Option.all
+    @@event_id = params[:event_id]
   end
 
   # GET /options/1
@@ -25,7 +26,7 @@ class OptionsController < ApplicationController
   # POST /options.json
   def create
     @option = Option.new(option_params)
-
+    @option.eventId = @@event_id
     respond_to do |format|
       if @option.save
         format.html { redirect_to @option, notice: 'Option was successfully created.' }

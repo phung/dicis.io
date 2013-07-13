@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  BASE_URL = "http://localhost:3000/"
   # GET /events
   # GET /events.json
   def index
@@ -15,6 +15,11 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    puts "new"
+  end
+  
+  def main
+    
   end
 
   # GET /events/1/edit
@@ -24,8 +29,9 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-
+    @event = Event.new(params[:event])
+    @event.url = BASE_URL + @event.name.gsub(' ', '_')
+    
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -48,6 +54,7 @@ class EventsController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
+      @event.save!
     end
   end
 

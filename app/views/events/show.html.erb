@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
+<p>Event Name:<%= @event.name %></p>
+<p>Event URL:<%= @event.url %></p>
 
+<%= button_to( "Vote" )%>
+<%= button_tag "Share Link" %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

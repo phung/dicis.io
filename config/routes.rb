@@ -1,19 +1,40 @@
 DicisIo::Application.routes.draw do
+  #devise_for :leaders
   resources :users
 
   resources :options
 
   resources :votes
 
-  resources :events
+  resources :events do
+    resources :options
+  end
   
   get '/:id/vote' => "votes#index"
+  
+  #get '/login' => "home#login"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  
+  get '/main' => "home#main"
+  
+  get '/newevent' => "events#main"
+  
+  devise_for :leaders, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
+  get 'leaders/sign_in' => 'home#login'
+  
+  #get '/events/:id/options' => 'options/'
+  #devise_scope :leader do
+  #  get "/login" => "devise/sessions#new"
+  #end
+  
+  #devise_scope :leader do
+  #  delete "/logout" => "devise/sessions#destroy"
+  #end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
