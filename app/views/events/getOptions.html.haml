@@ -9,12 +9,13 @@
 :javascript
   $.ajax({
     url: updateUrl,
-    data: JSON.stringify({});
+    type: 'GET',
+    data: '',
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     async: false,
     success: function(msg) {
       alert(msg);
     }
-  };
+  });
 

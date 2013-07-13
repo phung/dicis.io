@@ -6,6 +6,10 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
   end
+  
+  def update
+    @options = Option.select_public.where(:eventId => params[:id])
+  end
 
   # GET /events/1
   # GET /events/1.json
@@ -28,6 +32,7 @@ class EventsController < ApplicationController
   
   def getOptions
     @options = Option.select_public.where(:eventId => params[:id])
+    @eventId = params[:id]
   end
 
   # GET /events/1/edit
