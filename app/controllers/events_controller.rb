@@ -63,6 +63,7 @@ class EventsController < ApplicationController
   
   def result
     puts params
+    @eventId = params[:id]
     @options = Option.select('name, eventId').where(:eventId => params[:id])
     #@sorted_options = @options.sort()
     #render json: @sorted_options
