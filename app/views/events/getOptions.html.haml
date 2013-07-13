@@ -1,21 +1,40 @@
-%h1 Listing options
+.main
+  .logo_event
+    %h1 dicis.io
 
-%input#option{'type' => 'text'}
-%input#submit{'type' => 'submit', 'value' => 'add'}
+  %h1 Listing options
 
-%script
-  var updateUrl =
-  = "'/#@eventId/update-options';"
-:javascript
-  $.ajax({
-    url: updateUrl,
-    type: 'POST',
-    data: JSON.stringify({}),
-    contentType: 'application/json; charset=utf-8',
-    dataType: "json",
-    async: false,
-    success: function(msg) {
-      alert(msg);
-    }
-  });
+  %input#option{'type' => 'text'}
+  %input#submit{'type' => 'submit', 'value' => 'add'}
+
+  %script
+    var updateUrl =
+    = "'/#@eventId/update-options';"
+    var addUrl =
+    = "'/#@eventId/add-option';"
+  :javascript
+    $.ajax({
+      url: updateUrl,
+      type: 'GET',
+      data: '',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      success: function(msg) {
+        alert(msg);
+      }
+    });
+    $('#submit').on('click', function() {
+      $.ajax({
+        url: addUrl,
+        type: 'POST',
+        data: $('#option').val(),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: true,
+        success: function(msg) {
+          alert(msg);
+        }
+      });
+    });
 
