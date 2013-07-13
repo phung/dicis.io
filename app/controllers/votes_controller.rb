@@ -10,8 +10,17 @@ class VotesController < ApplicationController
   end
   
   def submit
-    @votes = params[:votes]
+    scores = params[:votes]
     
+    scores.each do |score|
+      @vote = Vote.new
+      @option = Option.where(:name => score[:title])
+      @vote.count = score[:score]
+      @vote.optionName = score[:title]
+      @vote.save!
+    end
+    
+    #render :nothing => :true
     #puts response.body
     #msg ={ :status => "ok", :message => "YAY", :html => "<p></p>"}
     #format.json { render :json => msg}
