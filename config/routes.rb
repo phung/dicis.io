@@ -12,7 +12,8 @@ DicisIo::Application.routes.draw do
   
   get '/:id/vote' => "votes#index"
   #post '/events/:id/getOptions' => "events#getOptions"
-  get '/:id/update-options' => "events#update"
+  post '/:id/update-options' => "events#update"
+  post '/:id/add-option' => "events#add"
   
   post '/:id/submit-votes' => "votes#submit"
   get '/:id/results' => "events#result"

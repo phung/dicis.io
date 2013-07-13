@@ -9,10 +9,10 @@
 :javascript
   $.ajax({
     url: updateUrl,
-    type: 'GET',
-    data: '',
+    type: 'POST',
+    data: JSON.stringify({}),
     contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
+    dataType: "json",
     async: false,
     success: function(msg) {
       alert(msg);

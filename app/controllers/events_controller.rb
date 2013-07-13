@@ -9,7 +9,20 @@ class EventsController < ApplicationController
   
   def update
     @options = Option.select_public.where(:eventId => params[:id])
+    #@options.each do |option|
+    #  option.update_attributes()
+    #end
+    #format.json { head :ok}
+    #respond_with  ( @options)
+    render :json => "{}", :status => :ok 
+    #head :ok
+    #render json: @options
+    #respond_to do |format|
+    #  render :json => @options
+    #end
   end
+  
+  def 
 
   # GET /events/1
   # GET /events/1.json
