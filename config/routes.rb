@@ -11,6 +11,8 @@ DicisIo::Application.routes.draw do
   end
   
   get '/:id/vote' => "votes#index"
+  post '/events/:id/getOptions' => "events#getOptions"
+  post '/:id/submit-votes' => "votes#submit"
   
   #get '/login' => "home#login"
 
