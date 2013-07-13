@@ -15,6 +15,8 @@ class VotesController < ApplicationController
     scores.each do |score|
       @vote = Vote.new
       @option = Option.where(:name => score[:title])
+      @option = @option.first
+      @option.score = score[:score]
       @vote.count = score[:score]
       @vote.optionName = score[:title]
       @vote.save!

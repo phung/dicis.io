@@ -70,7 +70,7 @@ class EventsController < ApplicationController
   
   def updated_result
     @options = Option.select('name, eventId').where(:eventId => params[:id])
-    @sorted_options = @options.sort()
+    @sorted_options = @options.sort(:score)
     render json: @sorted_options
   end
   
