@@ -55,7 +55,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    puts "new"
   end
   
   def main

@@ -4,14 +4,14 @@
 </div>
 
 <div class="notification">
-<p>Can't reach a decision? <%= @event.name %></p>
+  <p>Can't reach a decision? <!--<%= @event.name %>--></p>
 <p>Be democratic and vote at: <%= link_to "http://www.localhost:3000/#{@event.id}", :controller => 'events', :action => 'getOptions' %></p>
 </div>
 
-<div class="event_buttons">
+<!--<div class="event_buttons">
 	<ul class="event_buttons">
 		<li>Share Link</li>
 		<li>Vote</li>
 	</ul>
-</div>
+</div>-->
 </div>
