@@ -1,0 +1,30 @@
+<div class="main">
+
+<div class="logo_event">
+	<h1>dicis.io</h1>
+</div>
+
+<h1>Listing options</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @options.each do |option| %>
+      <tr>
+        <td><%= option.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+<%= render 'formoption' %>
+</table>
+
+</div>

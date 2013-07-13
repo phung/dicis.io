@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  respond_to :json
+  skip_before_filter :verify_authenticity_token
   BASE_URL = "http://localhost:3000/"
   # GET /events
   # GET /events.json
@@ -7,16 +9,26 @@ class EventsController < ApplicationController
     @events = Event.all
   end
   
-  def update
-    @options = Option.select_public.where(:eventId => params[:id])
+  def update_2
+    #puts "begin"
+    #puts params[:id]
+    @options = Option.select('name, eventId').where(:eventId => params[:id])
+    #puts :eventId
+    #puts Option.all
+    #puts "here"
+    #puts @options
     #@options.each do |option|
     #  option.update_attributes()
     #end
     #format.json { head :ok}
     #respond_with  ( @options)
-    render :json => "{}", :status => :ok 
+    #puts response.body
+    #respond_to do |format|
+    #  format.js {}
+    #  format.json { render json: @options, status: :created, location: @options } 
+    #end
     #head :ok
-    #render json: @options
+    render json: @options
     #respond_to do |format|
     #  render :json => @options
     #end

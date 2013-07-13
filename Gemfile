@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'thin'
 gem 'protected_attributes'
 gem 'devise', '3.0.0.rc'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
