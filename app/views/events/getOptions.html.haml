@@ -3,8 +3,8 @@
     %h1 dicis.io
 
   %h2.option_title What is your option?
-  %input#option_name{'type' => 'text'}
-  %input#submit_event{'type' => 'submit', 'value' => '+'}
+  %input#option{'type' => 'text'}
+  %input#submit{'type' => 'submit', 'value' => 'add'}
 
 
   %script
@@ -13,18 +13,37 @@
     var addUrl =
     = "'/#@eventId/add-option';"
   %ul#options
+  %div.submit-option
+    %a{:href => "/#@eventId/vote"}
+      %h2 Vote
   :javascript
-    $.ajax({
-      url: updateUrl,
-      type: 'POST',
-      data: '',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-      async: false,
-      success: function(msg) {
-        alert(msg);
-      }
-    });
+    var options = $('#options');
+    function update() {
+      $.ajax({
+        url: updateUrl,
+        type: 'POST',
+        data: '',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+          var children = options.children();
+          $(msg).each(function(index, elem) {
+            var found = false;
+            children.each(function(i, child) {
+              if ($(child).html() == elem.name) {
+                found = true;
+              }
+            });
+            if (!found) {
+              options.append('<div>' + elem.name + '</div>');
+            }
+          });
+          setTimeout(update, 500);
+        }
+      });
+    };
+    update();
     $('#submit').on('click', function() {
       $.ajax({
         url: addUrl,
