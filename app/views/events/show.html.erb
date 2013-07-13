@@ -2,7 +2,5 @@
 <p>Event Name:<%= @event.name %></p>
 <p>Event URL:<%= @event.url %></p>
 
-<%= button_to( "Vote", :controller => 'events', :action => 'getOptions' )%>
-<%= button_tag "Share Link" %>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<p>Vote at: <%= link_to "http://www.localhost:3000/#{@event.id}", :controller => 'events', :action => 'getOptions' %></p>
+
