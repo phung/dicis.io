@@ -4,16 +4,19 @@
   .select-glas
   %ul#items
 %input#vote{:type => 'button', :value => 'VOTE'}
+%script
+  var submitUrl =
+  = "'/#@eventId/submit-votes';"
+  var resultsUrl =
+  = "'/#@eventId/results';"
+  var options = [
+  - @options.each do |option|
+    = "{'title': '#{option.name}', 'score': 0},"
+  ];
 :javascript
   var displayed = [];
   var items = $('#items');
-  var options = [
-    {'title': 'Vietnamese', 'score': 0},
-    {'title': 'Indian', 'score': 0},
-    {'title': 'Italian', 'score': 0},
-    {'title': 'Lithuanian', 'score': 0},
-    {'title': 'Mexican', 'score': 0}];
-  setInterval(function() {
+  var scroller = setInterval(function() {
     var index = Math.floor(Math.random() * options.length);
     var newItem = $('<li class="runner">' + options[index].title + '</li>');
     newItem.data('index', index);
@@ -39,5 +42,43 @@
     explosion.css('-webkit-transform', closest.css('-webkit-transform'));
     explosion.css('top', closest.css('top'));
     items.append(explosion);
+    setTimeout((function(obj) {
+      return function() {
+        obj.remove();
+      }
+    }(explosion)), 1000);
+    var index = closest.data('index');
+    var option = options[index];
+    option.score++;
   });
+  var time = 1000;
+  var timeDisplay = $('#time');
+  var timer = setInterval(function() {
+    time--;
+    timeDisplay.html(('00' + Math.floor(time / 100)).slice(-2) + ':' + ('000' + (time % 100)).slice(-2));
+    if (time === 0) {
+      clearInterval(timer);
+      clearInterval(scroller);
+      $('#vote').unbind();
+      var i;
+      for (i = 0; i < displayed.length; i++) {
+        displayed[i].css('-webkit-animation-play-state', 'paused');
+      }
+      // TODO
+      var arr = { City: 'Moscow', Age: 25 };
+      $.ajax({
+        url: submitUrl,
+        type: 'POST',
+        data: JSON.stringify({
+          'votes': options
+        }),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        success: function() {
+          window.location = resultsUrl;
+        }
+      });
+    }
+  }, 10);
 
