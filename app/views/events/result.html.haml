@@ -1,0 +1,41 @@
+.main
+  .logo_event
+    %h1 dicis.io
+
+  %h2.option_title Results
+
+  %script
+    var updateUrl =
+    = "'/#@eventId/update-options';"
+    var addUrl =
+    = "'/#@eventId/add-option';"
+  %ul#options{:style => "min-height: 170px"}
+  :javascript
+    var options = $('#options');
+    function update() {
+      $.ajax({
+        url: updateUrl,
+        type: 'POST',
+        data: '',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+          var children = options.children();
+          $(msg).each(function(index, elem) {
+            var found = false;
+            children.each(function(i, child) {
+              if ($(child).html() == elem.name) {
+                found = true;
+              }
+            });
+            if (!found) {
+              options.append('<div>' + elem.name + '</div>');
+            }
+          });
+          setTimeout(update, 500);
+        }
+      });
+    };
+    update();
+
