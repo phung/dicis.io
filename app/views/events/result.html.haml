@@ -6,9 +6,7 @@
 
   %script
     var updateUrl =
-    = "'/#@eventId/update-options';"
-    var addUrl =
-    = "'/#@eventId/add-option';"
+    = "'/#@eventId/updated_results';"
   %ul#options{:style => "min-height: 170px"}
   :javascript
     var options = $('#options');
@@ -21,17 +19,9 @@
         dataType: 'json',
         async: false,
         success: function(msg) {
-          var children = options.children();
+          options.empty();
           $(msg).each(function(index, elem) {
-            var found = false;
-            children.each(function(i, child) {
-              if ($(child).html() == elem.name) {
-                found = true;
-              }
-            });
-            if (!found) {
-              options.append('<div>' + elem.name + '</div>');
-            }
+            options.append('<div>' + elem.name + '</div>');
           });
           setTimeout(update, 500);
         }
