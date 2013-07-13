@@ -117,25 +117,25 @@ border-bottom-left-radius: 10px;
 }
 
 .logo h1 {
-	width: 100%;
-	padding-top: 20px;
-	text-align: center;
-	margin-top: 100px;
-	font-weight: bold;
-	font-size: 60px;
+width: 100%;
+padding-top: 20px;
+text-align: center;
+margin-top: 100px;
+font-weight: bold;
+font-size: 60px;
 }
 
 .logo_event {
-	border-bottom: 2px #475b6b solid;
+border-bottom: 2px #475b6b solid;
 }
 
 .logo_event h1 {
-	width: 100%;
-	padding-top: 20px;
-	text-align: center;
-	margin-top: auto;
-	font-weight: bold;
-	font-size: 50px;
+width: 100%;
+padding-top: 20px;
+text-align: center;
+margin-top: auto;
+font-weight: bold;
+font-size: 50px;
 }
 
 
@@ -155,20 +155,20 @@ margin-top: 30px;
 }
 
 .submit-option h2 {
-	line-height: 1.2em;
-	text-align: center;
-	font-size: 40px;
-	color: #475b6b;
-	margin-top: 30px;
-	border: 1px solid #666;
-	width: 200px;
-	margin: auto;
-	border-radius: 3px;
+line-height: 1.2em;
+text-align: center;
+font-size: 40px;
+color: #475b6b;
+margin-top: 30px;
+border: 1px solid #666;
+width: 200px;
+margin: auto;
+border-radius: 3px;
 }
 
 .submit-option a{
-	margin-left: 20px;
-	text-decoration: none !important;
+margin-left: 20px;
+text-decoration: none !important;
 }
 
 .sub {
@@ -193,33 +193,33 @@ text-align: center;
 }
 
 form#new_event{
-	padding: 0;
-	margin: 0;
-	padding: 5px;
-	margin: 5px 0 0 0;
-	text-align: center;
+padding: 0;
+margin: 0;
+padding: 5px;
+margin: 5px 0 0 0;
+text-align: center;
 }
 
 .field {
-	width: 100%;
-	height: 150px;
+width: 100%;
+height: 150px;
 }
 .field input {
-	height: 50px;
-	width: 94%;
-	padding: 0 3% 0 3%;
-	background-color: #fff;
-	border: 1px solid #c8c8c8;
-	border-radius: 3px;
-	color: #ccc;
-	font-weight: normal;
-	font-size: 1.2em;
+height: 50px;
+width: 94%;
+padding: 0 3% 0 3%;
+background-color: #fff;
+border: 1px solid #c8c8c8;
+border-radius: 3px;
+color: #ccc;
+font-weight: normal;
+font-size: 1.2em;
 }
 
 
 
 .action input{
-	width: 100px;
+width: 100px;
 }
 
 .notification {
@@ -235,13 +235,13 @@ line-height: 1.4em;
 }
 
 .event_buttons ul{
-	list-style:none;
+list-style:none;
 }
 
 .option {
-	width: 100%;
-	height: 50px;
-	margin: 20px 20px 0px 20px;
+width: 100%;
+height: 50px;
+margin: 20px 20px 0px 20px;
 }
 .option input {
 height: 50px;
@@ -257,6 +257,24 @@ float: left;
 margin: auto;
 }
 
+#choice {
+margin-top: 50px;
+}
+
+#vote{
+height: 50px;
+width: 200px;
+padding: 0 3% 0 3%;
+background-color: #fff;
+border: 1px solid #c8c8c8;
+border-radius: 3px;
+font-weight: bold;
+font-size: 30px;
+float: left;
+margin-top: 50px;
+margin-left: 100px;
+}
+
 #option_name {
 width: 70%;
 height: 48px;
@@ -266,5 +284,18 @@ margin-right: 5px;
 h2.option_title {
 margin-left: 20px;
 font-size: 25px;
+}
+
+#choice {
+width: 80%;
+margin:50px auto 0px auto;
+}
+
+#time {
+margin: 50px 0px 50px 30px;
+font-size: 60px;
+text-align: center;
+font-weight: bold;
+color: #333;
 }
 
