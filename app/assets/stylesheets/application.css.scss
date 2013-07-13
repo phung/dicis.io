@@ -200,6 +200,8 @@ form#new_event{
 	font-size: 1.2em;
 }
 
+
+
 .action input{
 	width: 100px;
 }
@@ -219,3 +221,34 @@ line-height: 1.4em;
 .event_buttons ul{
 	list-style:none;
 }
+
+.option {
+	width: 100%;
+	height: 50px;
+	margin: 20px 20px 0px 20px;
+}
+.option input {
+height: 50px;
+width: 50px;
+padding: 0 3% 0 3%;
+background-color: #fff;
+border: 1px solid #c8c8c8;
+border-radius: 3px;
+color: #ccc;
+font-weight: normal;
+font-size: 1.2em;
+float: left;
+margin: auto;
+}
+
+#option_name {
+width: 70%;
+height: 48px;
+margin-right: 5px;
+}
+
+h2.option_title {
+margin-left: 20px;
+font-size: 25px;
+}
+
