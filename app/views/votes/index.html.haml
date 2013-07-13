@@ -1,0 +1,43 @@
+#time 0:10:00
+#choice
+  .glas
+  .select-glas
+  %ul#items
+%input#vote{:type => 'button', :value => 'VOTE'}
+:javascript
+  var displayed = [];
+  var items = $('#items');
+  var options = [
+    {'title': 'Vietnamese', 'score': 0},
+    {'title': 'Indian', 'score': 0},
+    {'title': 'Italian', 'score': 0},
+    {'title': 'Lithuanian', 'score': 0},
+    {'title': 'Mexican', 'score': 0}];
+  setInterval(function() {
+    var index = Math.floor(Math.random() * options.length);
+    var newItem = $('<li class="runner">' + options[index].title + '</li>');
+    newItem.data('index', index);
+    items.append(newItem);
+    displayed.push(newItem);
+    if (displayed.length > 5) {
+      displayed[0].remove();
+      displayed.shift();
+    }
+  }, 280);
+  $('#vote').on('click', function() {
+    var closest = displayed[0];
+    var distance = 1000000;
+    var i;
+    for (i = 1; i < displayed.length; i++) {
+      var dist = Math.abs(parseInt(displayed[i].css('top')) - 75);
+      if (dist < distance) {
+        closest = displayed[i];
+        distance = dist;
+      }
+    }
+    var explosion = $('<li class="voted">' + closest.html() + '</li>');
+    explosion.css('-webkit-transform', closest.css('-webkit-transform'));
+    explosion.css('top', closest.css('top'));
+    items.append(explosion);
+  });
+
