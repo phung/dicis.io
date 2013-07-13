@@ -12,7 +12,7 @@ DicisIo::Application.routes.draw do
   
   get '/:id/vote' => "votes#index"
   #post '/events/:id/getOptions' => "events#getOptions"
-  post '/:id' => "events#getOptions"
+  get '/:id' => "events#getOptions"
   post '/:id/submit-votes' => "votes#submit"
   get '/:id/results' => "events#result"
   #get '/login' => "home#login"
