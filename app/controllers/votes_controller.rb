@@ -4,6 +4,8 @@ class VotesController < ApplicationController
   # GET /votes
   # GET /votes.json
   def index
+    @eventId = params[:id];
+    @options = Option.where(:eventId => @eventId);
     @votes = Vote.all
   end
 

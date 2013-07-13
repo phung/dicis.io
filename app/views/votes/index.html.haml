@@ -1,0 +1,84 @@
+#time 0:10:00
+#choice
+  .glas
+  .select-glas
+  %ul#items
+%input#vote{:type => 'button', :value => 'VOTE'}
+%script
+  var submitUrl =
+  = "'/#@eventId/submit-votes';"
+  var resultsUrl =
+  = "'/#@eventId/results';"
+  var options = [
+  - @options.each do |option|
+    = "{'title': '#{option.name}', 'score': 0},"
+  ];
+:javascript
+  var displayed = [];
+  var items = $('#items');
+  var scroller = setInterval(function() {
+    var index = Math.floor(Math.random() * options.length);
+    var newItem = $('<li class="runner">' + options[index].title + '</li>');
+    newItem.data('index', index);
+    items.append(newItem);
+    displayed.push(newItem);
+    if (displayed.length > 5) {
+      displayed[0].remove();
+      displayed.shift();
+    }
+  }, 280);
+  $('#vote').on('click', function() {
+    var closest = displayed[0];
+    var distance = 1000000;
+    var i;
+    for (i = 1; i < displayed.length; i++) {
+      var dist = Math.abs(parseInt(displayed[i].css('top')) - 75);
+      if (dist < distance) {
+        closest = displayed[i];
+        distance = dist;
+      }
+    }
+    var explosion = $('<li class="voted">' + closest.html() + '</li>');
+    explosion.css('-webkit-transform', closest.css('-webkit-transform'));
+    explosion.css('top', closest.css('top'));
+    items.append(explosion);
+    setTimeout((function(obj) {
+      return function() {
+        obj.remove();
+      }
+    }(explosion)), 1000);
+    var index = closest.data('index');
+    var option = options[index];
+    option.score++;
+  });
+  var time = 1000;
+  var timeDisplay = $('#time');
+  var timer = setInterval(function() {
+    time--;
+    timeDisplay.html(('00' + Math.floor(time / 100)).slice(-2) + ':' + ('000' + (time % 100)).slice(-2));
+    if (time === 0) {
+      clearInterval(timer);
+      clearInterval(scroller);
+      $('#vote').unbind();
+      var i;
+      for (i = 0; i < displayed.length; i++) {
+        displayed[i].css('-webkit-animation-play-state', 'paused');
+      }
+      // TODO
+      var arr = { City: 'Moscow', Age: 25 };
+      $.ajax({
+        url: submitUrl,
+        type: 'POST',
+        data: JSON.stringify({
+          'votes': options
+        }),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        success: function() {
+          window.location = resultsUrl;
+        }
+      });
+    }
+  }, 10);
+

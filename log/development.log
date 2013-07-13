@@ -12248,3 +12248,39 @@ Started GET "/" for 127.0.0.1 at 2013-07-13 07:39:47 -0700
 Processing by HomeController#index as HTML
   Rendered home/index.html.erb within layouts/application (0.4ms)
 Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+
+
+Started GET "/assets/home.js?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+
+
+Started GET "/assets/options.js?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+
+
+Started GET "/assets/events.js?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+
+
+Started GET "/assets/users.js?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+
+
+Started GET "/assets/votes.js?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
+
+
+Started GET "/assets/application.js?body=1" for 172.19.212.161 at 2013-07-13 07:46:54 -0700
