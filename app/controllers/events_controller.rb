@@ -9,6 +9,17 @@ class EventsController < ApplicationController
     @events = Event.all
   end
   
+  def add 
+    @event = Event.find_by_id(params[:id])
+    puts @event
+    @opt = Option.new
+    @opt.name = params[:option]
+    @opt.eventId = params[:id]
+    @opt.save!
+    @event.save!
+    render :nothing => :true
+  end
+  
   def update_2
     #puts "begin"
     #puts params[:id]
