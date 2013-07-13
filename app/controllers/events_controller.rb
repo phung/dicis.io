@@ -22,6 +22,10 @@ class EventsController < ApplicationController
     
   end
   
+  def result
+    puts params
+  end
+  
   def getOptions
     @options = Option.select_public.where(:eventId => params[:id])
   end
