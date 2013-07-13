@@ -11,6 +11,7 @@ class VotesController < ApplicationController
   
   def submit
     @votes = params[:votes]
+    
     #puts response.body
     #msg ={ :status => "ok", :message => "YAY", :html => "<p></p>"}
     #format.json { render :json => msg}
